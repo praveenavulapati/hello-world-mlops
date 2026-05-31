@@ -1,12 +1,12 @@
 name: CI to Train and save the model
 
-on: 
-  push_requests:
+on:
+  push:
     branches: [main]
-  pull:
+  pull_request:
     branches: [main]
 jobs:
-  matrix pip:
+  matrix-pip:
     name: To Train and save the model
     runs-on: ubuntu-latest
     strategy:
@@ -36,3 +36,4 @@ jobs:
         uses: actions/upload-artifact@v4
         with:
           name: ml-artifacts-${{ matrix.python-version }}
+          path: artifacts
